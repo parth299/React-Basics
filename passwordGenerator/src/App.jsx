@@ -1,13 +1,16 @@
-import { useState } from 'react'
 import './App.css'
+import Generator from './components/Generator';
 
 function App() {
-  const [passLength, setpassLength] = useState(0);
+
   
 
   return (
     <>
-      <h1 className='text-4xl text-white'>Password Generator</h1>
+    <div className='w-screen'>
+      <h1 className='text-6xl text-white mt-10'>Password Generator</h1>
+      <Generator />
+    </div>
     </>
   )
 }
