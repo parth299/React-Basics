@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useRef } from 'react'
 
 const Generator = () => {
   const [passLength, setpassLength] = useState(8);
   const [isCharAllowed, setIsCharAllowed] = useState(false);
   const [isNumAllowed, setIsNumAllowed] = useState(false);
   const [password, setPassword] = useState("");
+  const passwordRef = useRef();
 
   const generatePassword = useCallback(() => {
     let pass = "";
@@ -39,8 +40,13 @@ const Generator = () => {
           value={password}
           readOnly
           placeholder='password' 
+          ref={passwordRef}
         />  
-        <button onClick={() => (window.navigator.clipboard.writeText(password))} className='bg-blue-600 p-4 text-white rounded-lg'>COPY</button>
+        <button onClick={() => {
+          window.navigator.clipboard.writeText(password)
+          passwordRef.current?.select();
+
+        }} className='bg-blue-600 p-4 text-white rounded-lg'>COPY</button>
         </div>
 
         <div className="password-setters flex items-center justify-evenly mt-5">

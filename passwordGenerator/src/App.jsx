@@ -8,7 +8,7 @@ function App() {
   return (
     <>
     <div className='w-screen text-center'>
-      <h1 className='text-6xl text-white mt-20 font-bold tracking-wide'>Password   Generator</h1>
+      <h1 className='text-6xl cursor-default text-white mt-20 font-bold tracking-wide'>Password   Generator</h1>
       <div className='flex justify-center'>
         <Generator />
       </div>
