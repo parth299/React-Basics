@@ -2,12 +2,14 @@ import { useState } from 'react'
 import './App.css'
 import Convertor from './components/Convertor'
 import useCurrencyInfo from './hooks/useCurrencyInfo';
+import useGithubInfo from './hooks/useGithubInfo';
 
 function App() {
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(1);
   const [from, setFrom] = useState("usd");
   const [to, setTo] = useState("inr");
   const [convertedAmount, setConvertedAmount] = useState(0)
+  const [username, setUsername] = useState("");
 
   const data = useCurrencyInfo(from);
 
@@ -19,6 +21,9 @@ function App() {
     setConvertedAmount(amount);
     setAmount(convertedAmount);
   }
+
+  const githubInfo = useGithubInfo(username);
+  const gitImg = githubInfo.avatar_url;
 
   const convert = () => {
     setConvertedAmount((amount * data[to]).toFixed(2));
@@ -47,6 +52,23 @@ function App() {
       />
       <div className="button flex justify-center">
         <button onClick={convert} className='bg-blue-500 p-2 rounded-lg text-white'>Convert {from} to {to}</button>
+      </div>
+
+      {/* Github details */}
+      <div className="github flex justify-between mt-24">
+        <div className='px-5'>
+          <label className='text-white px-2 font-bold' htmlFor="git">Enter Github Username:</label>
+        <input 
+          id='git'
+          type="text" 
+          className='rounded-lg'
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        </div>
+        
+        {
+          gitImg && <img width={100} height={100} src={gitImg} alt="" />
+        }
       </div>
     </>
   )
