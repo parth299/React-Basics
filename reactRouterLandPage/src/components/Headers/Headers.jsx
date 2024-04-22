@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom'
 
 function Headers() {
   return (
-    <div className='font-bold'>
+    <div className='font-bold absolute top-0 w-screen z-30'>
         <ul className='flex gap-32 justify-center py-4 bg-black/30 text-white'>
             <li><NavLink className={({isActive}) => (`
             ${isActive ? "text-zinc-500" : "text-white"}
